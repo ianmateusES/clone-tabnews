@@ -21,9 +21,9 @@
     }
   },
   "remoteUser": "node",
-  "mounts": [
-    "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"
-  ],
+  // "mounts": [
+  //   "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"
+  // ],
 
   // The 'service' property is the name of the service for the container that VS Code should
   // use. Update this value and .devcontainer/docker-compose.yml to the real service name.
