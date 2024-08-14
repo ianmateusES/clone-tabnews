@@ -7,12 +7,16 @@
     "dev": "next dev",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
-    "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test": "jest --runInBand",
+    "test:watch": "jest --watchAll --runInBand",
+    "migration:create": "node-pg-migrate -m infra/migrations create",
+    "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.example up"
   },
   "author": "Ian Mateus <estudo.ianmateus@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^16.4.5",
+    "dotenv-expand": "^11.0.6",
     "next": "^14.2.5",
     "node-pg-migrate": "^7.5.2",
     "pg": "^8.12.0",
