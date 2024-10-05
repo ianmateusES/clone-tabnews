@@ -5,8 +5,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 3000:3000
-    # volumes:
-    #   - .:/app
+    volumes:
+      - .:/app
     networks:
       - tabnews
 

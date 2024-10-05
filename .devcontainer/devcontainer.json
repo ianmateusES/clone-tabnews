@@ -16,7 +16,8 @@
         "PKief.material-icon-theme",
         "streetsidesoftware.code-spell-checker",
         "mikestead.dotenv",
-        "GitHub.copilot"
+        "GitHub.copilot",
+        "GitHub.vscode-github-actions"
       ]
     }
   },
