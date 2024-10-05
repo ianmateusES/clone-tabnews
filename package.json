@@ -5,10 +5,14 @@
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
+    "services:database:up": "docker compose up database -d",
+    "services:database:stop": "docker compose stop database",
+    "services:database:down": "docker compose down database",
     "lint:prettier:check": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
     "lint:eslint:check": "next lint --dir .",
     "test": "concurrently -n next,jest --hide next -k -s command-jest \"next dev\" \"jest --runInBand --verbose\"",
+    "test:ci": "npm run services:database:up && cross-env POSTGRES_HOST=localhost npm run test && npm run services:database:down",
     "test:watch": "jest --watchAll --runInBand",
     "migration:create": "node-pg-migrate -m infra/migrations create",
     "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.example up",
@@ -27,7 +31,10 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
     "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.7",
     "eslint-config-prettier": "^9.1.0",
