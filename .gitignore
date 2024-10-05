@@ -23,6 +23,5 @@ out/
 
 # Dependency lock files
 yarn.lock
-package-lock.json
 
 .env
