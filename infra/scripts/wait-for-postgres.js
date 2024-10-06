@@ -1,7 +1,7 @@
-require('dotenv').config();
+require("dotenv").config();
 
 const { exec } = require("node:child_process");
-const { Client } = require('pg');
+const { Client } = require("pg");
 
 function checkPostgresDocker() {
   exec("docker exec postgres-dev pg_isready --host localhost", handleReturn);
@@ -29,8 +29,8 @@ async function checkPostgresClient() {
   try {
     await client.connect();
   } catch (err) {
-   process.stdout.write(".");
-   checkPostgresClient();
+    process.stdout.write(".");
+    checkPostgresClient();
   } finally {
     await client.end();
   }
