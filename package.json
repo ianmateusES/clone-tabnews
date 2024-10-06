@@ -16,7 +16,9 @@
     "test:watch": "jest --watchAll --runInBand",
     "migration:create": "node-pg-migrate -m infra/migrations create",
     "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.example up",
-    "wait-for-postgres": "node infra/scripts/wait-for-postgres.js"
+    "wait-for-postgres": "node infra/scripts/wait-for-postgres.js",
+    "prepare": "husky",
+    "commit": "cz"
   },
   "author": "Ian Mateus <estudo.ianmateus@gmail.com>",
   "license": "MIT",
@@ -33,13 +35,21 @@
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
+    "commitizen": "^4.3.1",
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.7",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jest": "^28.8.0",
+    "husky": "^9.1.6",
     "jest": "^29.7.0",
     "prettier": "^3.3.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
