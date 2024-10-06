@@ -7,6 +7,7 @@
     "dev": "npm run services:wait:database && npm run migrations:up && next dev",
     "test": "concurrently -n next,jest --hide next -k -s command-jest \"next dev\" \"jest --runInBand --verbose\"",
     "test:ci": "npm run services:database:up && cross-env POSTGRES_HOST=localhost npm run test && npm run services:database:down",
+    "test:watch": "jest --watchAll --runInBand --verbose",
     "services:database:up": "docker compose up database -d",
     "services:database:stop": "docker compose stop database",
     "services:database:down": "docker compose down database",
