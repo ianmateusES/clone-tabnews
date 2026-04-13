@@ -1,4 +1,5 @@
 import { Client } from "pg";
+import { ServiceError } from "./errors.js";
 
 function getSSLValues() {
   if (process.env.POSTGRES_CA) {
@@ -29,16 +30,20 @@ async function query(queryObject) {
   try {
     client = await getNewClient();
   } catch (error) {
-    console.error(error);
-    throw error;
+    throw new ServiceError({
+      message: "Erro ao obter um novo cliente do banco de dados.",
+      cause: error,
+    });
   }
 
   try {
     const result = await client.query(queryObject);
     return result;
   } catch (error) {
-    console.error(error);
-    throw error;
+    throw new ServiceError({
+      message: "Erro na conexão com Banco ou na Query.",
+      cause: error,
+    });
   } finally {
     await client.end();
   }
